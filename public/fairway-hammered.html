@@ -1928,6 +1928,38 @@ function buildSummary() {
 
   addAward(awardsBody, '🏆', 'Winner Winner Chicken Dinner', `${winner.player.name} — low score, high street cred.`);
 
+  // Beer Classifications — the main event
+  function getBeerClassification(beers) {
+    if (beers === 0) return { emoji: '🚗', title: 'Designated Driver', desc: "Zero beers. You're either the DD or you took a wrong turn to the chess club." };
+    if (beers <= 3) return { emoji: '⛳', title: 'Cart Path Only', desc: "1-3 beers. Did you even come to have fun? The cart girl is disappointed in you." };
+    if (beers <= 6) return { emoji: '🤝', title: 'Social Drinker', desc: "4-6 beers. Respectable. You're here for the game AND the vibes." };
+    if (beers <= 9) return { emoji: '🎉', title: 'Good Time Charlie', desc: "7-9 beers. NOW we're talking. Par for the course. You ARE the course." };
+    if (beers <= 12) return { emoji: '🏅', title: 'Functional Alcoholic', desc: "10-12 beers. Still hitting fairways somehow. A medical mystery. A legend." };
+    if (beers <= 15) return { emoji: '📱', title: 'Check His Pulse', desc: "13-15 beers. Somebody text his wife. We'll handle the clubs." };
+    if (beers <= 17) return { emoji: '🏥', title: 'Banana Bag & Popsicle', desc: "16-17 beers. Straight to the IV drip. Do not pass go. Do not collect birdie." };
+    return { emoji: '👑', title: 'LEGENDARY STATUS', desc: "18+ beers. One per hole. You absolute unit. We are not worthy. Please don't drive home." };
+  }
+
+  const classCard = document.createElement('div');
+  classCard.className = 'summary-card';
+  classCard.innerHTML = `
+    <div class="summary-card-header">🍺 Official Beer Classifications</div>
+    <div class="summary-card-body">
+      ${state.players.map(p => {
+        const c = getBeerClassification(p.beers);
+        return `<div style="padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;align-items:flex-start;gap:12px">
+          <div style="font-size:32px;flex-shrink:0">${c.emoji}</div>
+          <div>
+            <div style="font-weight:800;font-size:16px;color:#1a472a">${p.name}</div>
+            <div style="font-size:13px;color:#f97316;font-weight:700;margin:2px 0">${c.title} — ${p.beers} 🍺</div>
+            <div style="font-size:13px;color:#666;font-style:italic">${c.desc}</div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+  body.appendChild(classCard);
+
   // Most beers
   const beerSorted = [...state.players].sort((a, b) => b.beers - a.beers);
   const beerChamp = beerSorted[0];
