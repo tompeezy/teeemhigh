@@ -2,7 +2,7 @@
   "name": "Fairway Hammered",
   "short_name": "Fairway 🍺",
   "description": "Golf scorecard + beer tracker. Because someone had to build this.",
-  "start_url": "/fairway-hammered",
+  "start_url": "/fairway-hammered.html",
   "display": "standalone",
   "background_color": "#1a4731",
   "theme_color": "#1a4731",
