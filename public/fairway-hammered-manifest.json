@@ -1,0 +1,24 @@
+{
+  "name": "Fairway Hammered",
+  "short_name": "Fairway 🍺",
+  "description": "Golf scorecard + beer tracker. Because someone had to build this.",
+  "start_url": "/fairway-hammered",
+  "display": "standalone",
+  "background_color": "#1a4731",
+  "theme_color": "#1a4731",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/fairway-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/fairway-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["sports", "games", "entertainment"],
+  "screenshots": []
+}

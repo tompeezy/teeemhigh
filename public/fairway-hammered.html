@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fairway Hammered">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a4731">
+<meta name="description" content="Golf scorecard + beer tracker. Because someone had to build this.">
+<link rel="manifest" href="/fairway-hammered-manifest.json">
+<link rel="apple-touch-icon" href="/fairway-icon-192.png">
+<link rel="apple-touch-startup-image" href="/fairway-icon-512.png">
 <title>Fairway Hammered 🍺⛳</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -2097,6 +2106,16 @@ function escHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+</script>
+<script>
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/fairway-sw.js')
+      .then(() => console.log('Fairway Hammered: Ready to play offline 🍺⛳'))
+      .catch(() => console.log('Running without service worker'));
+  });
 }
 </script>
 </body>
